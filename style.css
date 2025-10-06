@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+:root {
+    --primary-color: #00f8ff;
+    --increment-color: #00ff88;
+    --decrement-color: #ff4466;
+    --reset-color: #ffaa00;
+    --dark-bg: #080d19;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+    background-color: var(--dark-bg);
+}
+
+/* Background SVG container */
+#background-svg-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* Neon display */
+.neon-display {
+    color: var(--primary-color);
+    text-shadow:
+        0 0 10px rgba(0, 248, 255, 0.8),
+        0 0 25px rgba(0, 248, 255, 0.6),
+        0 0 40px rgba(0, 248, 255, 0.4);
+    font-variant-numeric: tabular-nums;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Flash animation */
+@keyframes flashEffect {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.08); opacity: 0.95; }
+    100% { transform: scale(1); opacity: 1; }
+}
+.flash-active {
+    animation: flashEffect 0.18s ease-in-out;
+}
+
+/* Glassmorphism container */
+#app-container {
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    background-color: rgba(14, 23, 41, 0.7);
+    border: 1px solid rgba(0, 248, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 10;
+}
+
+/* Button styling */
+.neon-btn {
+    border: none;
+    transition: all 0.2s ease-out;
+    box-shadow: 0 4px 0 var(--dark-bg);
+}
+
+.neon-btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 0px 0 var(--dark-bg);
+}
+
+/* Hover glows */
+.neon-green-shadow:hover { box-shadow: 0 0 20px var(--increment-color), 0 0 8px var(--increment-color); }
+.neon-red-shadow:hover { box-shadow: 0 0 20px var(--decrement-color), 0 0 8px var(--decrement-color); }
+.neon-amber-shadow:hover { box-shadow: 0 0 20px var(--reset-color), 0 0 8px var(--reset-color); }
+
+/* SVG icon color */
+.svg-icon {
+    stroke: var(--dark-bg);
+    width: 1.5rem;
+    height: 1.5rem;
+    vertical-align: middle;
+}
